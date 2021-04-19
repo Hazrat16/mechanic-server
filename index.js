@@ -40,6 +40,23 @@ client.connect(err => {
             })
     })
 
+    // app.post('/bookings', (req, res) => {
+    //     const email = req.body.email;
+    //     console.log(newBookings);
+    //     adminCollection.find({email:email})
+    //         .toArray((err,admin) => {
+    //             const filter = {email:email}
+    //             if(admin === 0){
+    //                 filter.email= email;
+    //             }
+    //             bookingsCollection.find(filter)
+    //             .toArray((err,documents) => {
+    //                 res.send(documents)
+    //             })
+    //         })
+    //     console.log(newBookings);
+    // })
+
     app.post('/bookings', (req, res) => {
         const newBookings = req.body;
         console.log(newBookings);
@@ -51,6 +68,7 @@ client.connect(err => {
     })
 
     app.get('/bookings', (req, res) => {
+        const email = req.body.email;
         bookingsCollection.find()
             .toArray((err, items) => {
                 res.send(items);
